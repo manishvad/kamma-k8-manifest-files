@@ -33,3 +33,7 @@ Please follow step by step ...
 (6) `kubectl apply -f deployment.yaml` && `kubectl apply -f service.yaml`
 
 - Apply the k8s manifest files & the web application will be deployed.
+
+(7) `minikube service kamma-web-app`
+
+- Open the  service

@@ -13,7 +13,7 @@ spec:
         app: kamma-web-app
     spec:
       containers:
-      - name: my-container
+      - name: kamma-web-app
         image: <aws_account_number>.dkr.ecr.eu-west-1.amazonaws.com/kamma-ecr-repo:kamma-whoami-<tag_number>
         ports:
         - containerPort: 80

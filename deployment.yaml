@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kamma-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kamma-web-app
+  template:
+    metadata:
+      labels:
+        app: kamma-web-app
+    spec:
+      containers:
+      - name: my-container
+        image: <aws_account_number>.dkr.ecr.eu-west-1.amazonaws.com/kamma-ecr-repo:kamma-whoami-<tag_number>
+        ports:
+        - containerPort: 80

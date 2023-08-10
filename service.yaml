@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kamma-web-app
+spec:
+  type: LoadBalancer
+  ports:
+    # This is the port number which makes a service visible to other services running within the same K8s cluster
+  - port: 80
+    # This port is the port on the POD where the service is running.
+    targetPort: 80
+    # This port is the port on which the service can be accessed from external users using Kube-Proxy.
+    nodePort: 30033
+    protocol: TCP
+    name: http
+  selector:
+    app: kamma-web-app

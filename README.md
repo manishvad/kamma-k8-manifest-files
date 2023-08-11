@@ -46,7 +46,7 @@ Please follow step by step ...
 
 - After running step (9) in that SSH terminal we need to port forward to create a tunnel between the ec2 instance (locally) and the service running in minikube. This allows the application to run as though it were running locally on the ec2 instance. If we were to curl `http://127.0.0.1:8080` inside the EC2 instance the application would also repsond.  
 
-(11) `ssh -i "<key-pem>" ec2-user@<dns-address>` -L 0.0.0.0:8080:127.0.01:8080`
+(11) `ssh -i "<key-pem>" ec2-user@<dns-address> -L 0.0.0.0:8080:127.0.01:8080`
 
 - We now need to open a third SSH terminal which will allow us to connect to the port 8080 on the ec2 instance from our local workstation.
 

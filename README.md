@@ -34,6 +34,20 @@ Please follow step by step ...
 
 - Apply the k8s manifest files & the web application will be deployed.
 
-(7) `minikube service kamma-web-app`
+(8) `minikube tunnel`
 
-- Open the  service
+- Open a new SSH terminal and login again to the EC2 instance. This command creates a network route on the host to the service using the cluster's IP address.
+
+(9) `kubectl get svc`
+
+- In the previous SSH terminal we already have running will see that the service has an external IP address but this is only accessible internally within the EC2 instance. If we run `curl http://<external-ip>:8080` the application will respond successfully.
+
+(10) `kubectl port-forward svc/kamma-web-app 8080:8080`
+
+- After running step (9) in that SSH terminal we need to port forward to create a tunnel between the ec2 instance (locally) and the service running in minikube. This allows the application to run as though it were running locally on the ec2 instance. If we were to curl `http://127.0.0.1:8080` inside the EC2 instance the application would also repsond.  
+
+(11) `ssh -i "<key-pem>" ec2-user@<dns-address>` -L 0.0.0.0:8080:127.0.01:8080`
+
+- We now need to open a third SSH terminal which will allow us to connect to the port 8080 on the ec2 instance from our local workstation.
+
+(12) Finally open a browser and hit http://127.0.0.1:8080. You should now see the application running locally from our local workstation. 
